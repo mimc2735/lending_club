@@ -1,0 +1,70 @@
+STARTING OUR AWS S3 COMMAND
+
+-----------
+TO START YOU NEED TO CONNECT THROUGH WHATEVER FOLDER YOU HAVE THAT CONTAINS THE FILE (see week 5)
+MSBX5420-SPR23.pem
+
+
+-----------------------------------------------------------------
+FIRST STEP
+THIS CHANGES DIRECTORY TO THE FOLDER THAT HOLDS THAT FILE TO ACCESS THE .PEM KEY
+
+cd <DIRECTORY>
+
+
+----------------------------------------------------------------
+IF WORKING ON MAC, ENTER THE PERMISSION OVERRIDE
+sudo chmod 600 MSBX5420-SPR23.pem
+
+
+----------------------------------------------------------------
+NOW I'M TRYING TO ACCESS THE CLUSTER 2
+
+ssh -i MSBX5420-SPR23.pem hadoop@ec2-34-220-3-240.us-west-2.compute.amazonaws.com
+
+
+
+----------------------------------------------------------------
+NOW ACCESS THE TEAMS DIRECTORY
+
+cd /mnt1/msbx5420_teams
+
+
+------------------------------------------------------------------
+THEN CREATED OUR OWN DIRECTORY
+
+mkdir team_mba
+
+
+-------------------------------------------------------------------
+CAN CHECK THAT WE'RE IN THERE WITH 
+
+ls
+
+
+--------------------------------------------------------------------
+NOW LEAVE THE MASTER NODE
+
+exit
+
+
+-----------------------------------------------------------------------
+THIS WILL UPLOAD OUR FILE TO THE CLUSTER
+
+scp -i MSBX5420-SPR23.pem accepted_2007_to_2018Q4.csv hadoop@ec2-34-220-3-240.us-west-2.compute.amazonaws.com:/mnt1/msbx5420_teams/team_mba
+
+
+---------------------------------------------------------------------
+TO CHECK THAT THE FILE IS THERE, RERUN THE FIRST LINE
+
+ssh -i MSBX5420-SPR23.pem hadoop@ec2-34-220-3-240.us-west-2.compute.amazonaws.com
+
+
+CHANGE TO THE TEAMS DIRECTORY
+cd /mnt1/msbx5420_teams
+
+CHANGE TO OUR DIRECTORY
+cd team_mba
+
+CHECK THE CONTENTS
+ls
